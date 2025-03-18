@@ -919,7 +919,6 @@
                 feedbackInput = document.getElementById("feedback-input-field");
                 feedbackValue = feedbackInput.value;
                 resetIdleTracking("close")
-                console.log("starRating", starRating)
             }
 
 
@@ -973,7 +972,6 @@
                         return response.json();
                     })
                     .then((data) => {
-                        console.log(data.data.token)
                         if (data.error_code === 200) {
                             apiToken = data.data.token;
                             (async () => {
@@ -1020,7 +1018,6 @@
                     MRChatboxUl.append(incomingMsgBox2);
                 }
 
-                console.log(flag)
 
                 var requiredParams;
                 var dataObject;
@@ -1050,7 +1047,6 @@
                     };
                 }
 
-                console.log(requiredParams)
 
                 const url = "https://consumerapi.modelrocket.ai/chatbot_widget";
 
@@ -1071,8 +1067,7 @@
                         return response.json();
                     })
                     .then((data) => {
-                        console.log(Object.keys(data.data).length === 0);
-                        console.log(data);
+                       
 
                         dataObject = data.data
                         incomingMsgBox1.className = "d-none"
@@ -1126,7 +1121,6 @@
 
 
                 if (Object.keys(dataObject).length === 0) {
-                    console.log(dataObject)
                 } else if (Object.keys(dataObject).length) {
                     const incomingMsgBox = document.createElement("div");
                     incomingMsgBox.className = "d-flex incoming-msg";
@@ -1284,7 +1278,6 @@
             };
 
             const closeChat = () => {
-                console.log("chat end")
                 loadingContainer.classList.remove("show")
                 MRChatbotSection.classList.remove("Adra-MR-show-chatbot");
                 const feedbackQuestion = document.getElementById("feedback-question")
