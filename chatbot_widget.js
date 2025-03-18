@@ -1028,8 +1028,8 @@
                 if (flag === "close") {
                     loadingContainer.classList.add("show")
                     requiredParams = {
-                        client_name: "ModelRocket",
-                        service_name: "Sales Knowledge Worker MR-H",
+                        client_name: "JC Heritage Roofing",
+                        service_name: "Sales Knowledge Worker",
                         language: "english",
                         msg: userInputTextValue,
                         flag: flag,
@@ -1040,8 +1040,8 @@
 
                 } else {
                     requiredParams = {
-                        client_name: "ModelRocket",
-                        service_name: "Sales Knowledge Worker MR-H",
+                        client_name: "JC Heritage Roofing",
+                        service_name: "Sales Knowledge Worker",
                         language: "english",
                         msg: userInputTextValue,
                         flag: flag,
