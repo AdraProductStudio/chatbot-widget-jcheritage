@@ -3,13 +3,11 @@
         ChatWidget.init({
             client_id: "f195eef7-fd2f-4d54-9da2-69a757366093",
             client_secret: "tavQqJfg5BoTADWhw30jbm_PDFZB7FQ-QzAKHHvD6yM",
-            //   domain:"adraproductstudio.github.io",
             domain: "modelrocket.ai",
         });
     });
     const ChatWidget = {
         init: function (config) {
-            // const { apiKey, containerId = "Adra-MR-chatbot-section" } = config;
 
             const {
                 client_id,
@@ -23,55 +21,13 @@
                 this.injectStyles();
                 this.injectGoogleFonts();
                 this.renderChatWidget(client_id, client_secret, domain, containerId);
-                // this.generateToken(client_id, client_secret, domain)
             } else {
                 alert('Chatbot not rendered')
             }
 
-
-            // if (config.apiKey === "MR_Widget") {
-            //     this.injectStyles(apiKey);
-            //     this.injectGoogleFonts();
-            //     this.renderChatWidget(config, containerId);
-            // } else {
-            //     alert("Invalid API key")
-            // }
         },
 
-        // generateToken : (client_id,client_secret, domain) => {
-        //     const url = "https://consumerapi-dev.modelrocket.ai/gettoken";
-        //     const username = client_id; // Replace with your username
-        //     const password = client_secret ;
-        //     const base64Credentials = btoa(`${username}:${password}`);
-
-        //     fetch(url, {
-        //         method: "GET",
-        //         headers: {
-        //             Authorization: `Basic ${base64Credentials}`,
-        //             domain : domain
-        //         },
-        //     })
-        //         .then((response) => {
-        //             if (!response.ok) {
-        //                 throw new Error(`HTTP error! status: ${response.status}`);
-        //             }
-        //             return response.json();
-        //         })
-        //         .then((data) => {
-        //             if (data.error_code === 200) {
-        //                      this.injectGoogleFonts();
-        //         this.renderChatWidget(config, containerId);
-        //                 apiToken = data.data.token;
-        //                 (async () => {
-        //                     await getResponse("init", "");
-        //                 })();
-        //             }
-        //         })
-        //         .catch((error) => {
-        //             console.error("Error:", error);
-        //         });
-        //     },
-
+    
         injectGoogleFonts: function () {
             const link = document.createElement("link");
             link.rel = "stylesheet";
@@ -86,8 +42,7 @@
 
                                 :root {
                                 --lightblue: #e3f2fd;
-                                --purple: #724ae8;
-                                --overall-theme: #12294b;
+                                --overall-theme: #11406a;
                             }
 
                             * {
@@ -257,15 +212,6 @@
                                 box-shadow: 0 0 0 rgba(0, 0, 0, .2);
                             }
 
-
-                            /* .Adra-MR-chatbot .feedback-submit-button{
-                                            display:none; 
-                                        }
-
-                                        .Adra-MR-chatbot .feedback-submit-button.show{
-                                            display:block; 
-                                        } */
-
                             .Adra-MR-chatbot .feedback-button-container {
                                 display: flex;
                                 display: none;
@@ -295,7 +241,7 @@
                             }
 
                             .Adra-MR-chatbot header {
-                                background-color: #11406a;
+                                background-color: var(--overall-theme);
                                 text-align: center;
                                 padding: 30px 0;
                                 position: relative;
@@ -328,14 +274,7 @@
                                 display: flex;
                             }
 
-                            /* .chatbox p{
-                        background-color: var(--overall-theme);
-                        border-radius: 10px 10px 0px 10px;
-                        padding: 12px 16px;
-                        color: #fff;
-                        font-size: 0.95rem;
-                        max-width: 75%;
-                    } */
+
                             .Adra-MR-chatbox .incoming {
                                 margin-top: 7px;
 
@@ -379,27 +318,20 @@
                                 height: px;
                             }
 
-                            .Adra-MR-chatbot #Adra-MR-send-btn {
+                           #Adra-MR-send-btn {
                                 color: var(--overall-theme);
                                 font-size: 1.5rem;
                                 cursor: pointer;
                                 align-self: center;
-                                /* visibility: hidden; */
-                                pointer-events: none;
-                                opacity: 25%;
+                                opacity: 0.25;
+                                transition: opacity 0.2s ease;
                             }
-
-                            .Adra-MR-chat-input textarea:valid~#Adra-MR-send-btn {
-                                visibility: visible;
-                                pointer-events: all;
-                                opacity: 100%;
-                            }
-
+                                
                             .Adra-MR-chatbot-toggler {
                                 position: fixed;
                                 bottom: 40px;
                                 right: 35px;
-                                background-color: #fff;
+                                background-color:#fff;
                                 color: #fff;
                                 border-radius: 50%;
                                 width: 50px;
@@ -409,7 +341,7 @@
                                 justify-content: center;
                                 cursor: pointer;
                                 z-index: 999;
-                                color: #11406a !important;
+                                color: var(--overall-theme)
                             }
 
                             .Adra-MR-chatbot-toggler p {
@@ -481,7 +413,7 @@
                             .Adra-MR-chatbot .placeholder-msg-text {
                                 line-height: 1.5em;
                                 display: inline-block;
-                                background-color: #11406a;
+                                background-color: var(--overall-theme);
                                 color: #fff;
                                 font-size: 14px;
                                 padding: 10px;
@@ -499,7 +431,7 @@
                             .Adra-MR-chatbot .incoming-msg-text {
                                 line-height: 1.5em;
                                 display: inline-block;
-                                background-color: #11406a;
+                                background-color: var(--overall-theme);
                                 color: #fff;
                                 font-size: 14px;
                                 padding: 10px;
@@ -515,8 +447,8 @@
                             }
 
                             .Adra-MR-chatbot .incoming-msg-text a {
-                                color:rgb(173, 216, 247) !important;
-                                font-weight: 500 !important;
+                                color:#fff !important;
+                                font-weight: 600 !important;
                                 text-decoration: underline !important;
                             }
 
@@ -529,7 +461,7 @@
                                 margin-left: 10px;
                                 width: 0;
                                 height: 0;
-                                border-top: 10px solid #11406a;
+                                border-top: 10px solid var(--overall-theme);
                                 border-left: 12px solid transparent;
                             }
 
@@ -567,13 +499,13 @@
                                 margin-right: 10px;
                                 width: 0;
                                 height: 0;
-                                border-top: 10px solid #7cb0d4;
+                                border-top: 10px solid rgb(212, 226, 236);
                                 border-right: 12px solid transparent;
                             }
 
                             .Adra-MR-chatbot .outgoing-msg-text {
                                 margin-right: 0px;
-                                background: #7cb0d4 !important;
+                                background:rgb(212, 226, 236) !important;
                                 color: #000;
                                 font-size: 14px;
                                 padding: 10px;
@@ -592,12 +524,7 @@
                             }
 
 
-
-
-
-
                             /* media-queries */
-
                             @media (max-width:490px) {
                                 .Adra-MR-chatbot {
                                     width: 100%;
@@ -637,41 +564,16 @@
                 document.body.appendChild(container);
             }
 
-            container.innerHTML = `
-                        <div id="Adra-MR-chatbot-section" class="Adra-MR-chatbot-section">
-                            <div class="Adra-MR-chatbot">
-                                <header class="Adra-MR-header">
-                                <h2 class="Adra-MR-h2">MR Agent</h2>
-                                <p class="MR material-symbols-outlined close-icon Adra-MR-chatbot-close-icon">close</p>
-                                </header>
-                                <div class="Adra-MR-chat-container" id="Adra-MR-chat-container">
-                                <ul class="Adra-MR-chatbox" id="Adra-MR-chatbox">
-                                    <div class="d-flex incoming-msg" id="incoming-msg-box">
-                        
-                                    </div>
-                                </ul>
-                                </div>
-                                <div class="Adra-MR-chat-input">
-                                <textarea autofocus="" class="Adra-MR-userInputText" id="Adra-MR-userInputText" placeholder="Enter a message..."
-                                    required=""></textarea>
-                                <span class="material-symbols-outlined" id="Adra-MR-send-btn">send</span>
-                                </div>
-                            </div>
-                            <div class="Adra-MR-chatbot-toggler">
-                                <p class="material-symbols-outlined message-icon">mode_comment</p>
-                                <p class="material-symbols-outlined close-icon">close</p>
-                            </div>
-                        </div>`;
+            container.innerHTML = ``;
 
             this.initializeChatLogic(client_id, client_secret, domain, container);
         },
 
         initializeChatLogic: function (client_id, client_secret, domain, container) {
 
-            // Warn when the page is being closed or reloaded
             window.addEventListener("beforeunload", (event) => {
                 event.preventDefault();
-                event.returnValue = ""; // Ensures browser prompts a confirmation
+                event.returnValue = ""; 
                 hideWidget()
             });
 
@@ -679,9 +581,6 @@
             var feedbackValue;
             var starRating = 0;
             var stars;
-
-
-
 
 
             function getStarValue(event) {
@@ -706,32 +605,51 @@
                 starRating = 0;
             }
 
+
             const handleGiveFeedback = () => {
                 const feedbackInputField = document.getElementById("feedback-input-field");
-                feedbackInputField.classList.add("show")
+                feedbackInputField.classList.add("show");
+                feedbackInputField.focus();
 
-                const feedbackButtonContainer = document.getElementById("feedback-button-container")
-                feedbackButtonContainer.classList.add("hide")
+                const feedbackButtonContainer = document.getElementById("feedback-button-container");
+                feedbackButtonContainer.classList.add("hide");
 
-                const feedbackSubmitButtonContainer = document.getElementById("feedback-submit-button-container")
-                feedbackSubmitButtonContainer.classList.add("show")
-                feedbackSubmitButtonContainer.addEventListener("click", hideWidget)
-                feedbackInputField.addEventListener("keypress", (e) => {
-                if (e.key === "Enter") {
-                    if (feedbackInputField.value.trim() === "") {
-                        e.preventDefault();
-                        return;
-                    } else {
-                        e.preventDefault();
-                        hideWidget();
-                    }
-                }
-            });
+                const feedbackSubmitButtonContainer = document.getElementById("feedback-submit-button-container");
+                feedbackSubmitButtonContainer.classList.add("show");
 
-                const feedbackQuestion = document.getElementById("feedback-question")
+                const feedbackQuestion = document.getElementById("feedback-question");
                 feedbackQuestion.innerText = "Please specify the query intent and your feedback below";
 
-            }
+                const updateSubmitButtonState = () => {
+                    if (feedbackInputField.value.trim().length === 0) {
+                        feedbackSubmitButtonContainer.style.opacity = "0.3";
+                        feedbackSubmitButtonContainer.style.pointerEvents = "none";
+                    } else {
+                        feedbackSubmitButtonContainer.style.opacity = "1";
+                        feedbackSubmitButtonContainer.style.pointerEvents = "all";
+                    }
+                };
+                updateSubmitButtonState();
+
+                feedbackInputField.addEventListener("input", updateSubmitButtonState);
+
+                feedbackSubmitButtonContainer.addEventListener("click", hideWidget)
+                feedbackInputField.addEventListener("keypress", (e) => {
+                    if (e.key === "Enter" && e.shiftKey) return;
+
+                    if (e.key === "Enter") {
+                        if (feedbackInputField.value.trim() === "") {
+                            e.preventDefault();
+                            return;
+                        } else {
+                            e.preventDefault();
+                            hideWidget();
+                        }
+                    }
+                });
+            };
+
+
             const MRChatbotSection = document.getElementById('Adra-MR-chatbot-section')
             MRChatbotSection.className = "Adra-MR-chatbot-section"
 
@@ -761,11 +679,11 @@
                                      </div>
                                      <textarea type="text" placeholder="Enter your feedback here" id="feedback-input-field" class="feedback-input-field" ></textarea>
                                      <div id="feedback-button-container" class="feedback-button-container" >
-                                         <button style="background-color: #11406a; color: #fff; border: none; width: 50%; border-radius: 5px; padding: 3px;" onclick="handleGiveFeedback()">Yes</button>
+                                         <button style="background-color: var(--overall-theme); color: #fff; border: none; width: 50%; border-radius: 5px; padding: 3px;" onclick="handleGiveFeedback()">Yes</button>
                                          <button style="background-color: lightgrey; color: #000; border: none; width: 50%; border-radius: 5px; padding: 3px;" onclick="hideWidget()">No</button>
                                      </div>
-                                     <div id="feedback-submit-button-container" class="feedback-submit-button-container">
-                                         <button style="background-color: #11406a; color: #fff; border: none; width: 100%; border-radius: 5px; padding: 8px;">Submit</button>
+                                     <div id="feedback-submit-button-container" class="feedback-submit-button-container" >
+                                         <button id="feedback-submit-button" style="background-color: var(--overall-theme); color: #fff; border: none; width: 100%; border-radius: 5px; padding: 8px;cursor:pointer">Submit</button>
                                      </div>
                                   </div>`;
 
@@ -812,13 +730,23 @@
             const MRSendbtnSpan = document.createElement("span")
             MRSendbtnSpan.className = "material-symbols-outlined"
             MRSendbtnSpan.setAttribute("id", "Adra-MR-send-btn")
-            // MRSendbtnSpan.style.backgroundColor = "red"
-            // MRSendbtnSpan.setAttribute("onclick", "handleSendClick()")
             MRSendbtnSpan.innerText = "send"
+
+            const updateSendButtonState = () => {
+                if (MRUserInputText.value.trim().length === 0) {
+                    MRSendbtnSpan.style.pointerEvents = "none";
+                    MRSendbtnSpan.style.opacity = "0.25";
+                } else {
+                    MRSendbtnSpan.style.pointerEvents = "all";
+                    MRSendbtnSpan.style.opacity = "1";
+                }
+            };
+            updateSendButtonState();
+            
+            MRUserInputText.addEventListener("input", updateSendButtonState);
+
             MRChatInput.append(MRUserInputText, MRSendbtnSpan)
             MRChatbot.append(loadingContainer, feedbackModal, MRheader, MRChatContainer, MRChatInput)
-
-
 
             const MRChatbotToggler = document.createElement("div")
             MRChatbotToggler.className = "Adra-MR-chatbot-toggler"
@@ -838,21 +766,6 @@
 
             const randomNumberGenerate = () => {
                 return Math.floor(Math.random() * (9999999999 - 1000000000 + 1)) + 1000000000;
-            }
-
-            function typeHTML(element, text, speed = 30, callback) {
-                element.innerHTML = "";
-                let index = 0;
-                function type() {
-                    if (index < text.length) {
-                        element.innerHTML += text[index];
-                        index++;
-                        setTimeout(type, speed);
-                    } else if (callback) {
-                        callback();
-                    }
-                }
-                type();
             }
 
             const triangleLeft = document.createElement("div");
@@ -952,8 +865,7 @@
 
             const generateToken = async () => {
                 const url = "https://consumerapi.modelrocket.ai/gettoken";
-                // const url = "https://consumerapi.modelrocket.ai/gettoken";
-                const username = client_id; // Replace with your username
+                const username = client_id; 
                 const password = client_secret;
                 const base64Credentials = btoa(`${username}:${password}`);
 
@@ -961,7 +873,6 @@
                     method: "GET",
                     headers: {
                         Authorization: `Basic ${base64Credentials}`,
-                        // domain: "onboardconfig.modelrocket.ai"
                         domain: domain
                     },
                 })
@@ -1018,35 +929,33 @@
                     MRChatboxUl.append(incomingMsgBox2);
                 }
 
-
                 var requiredParams;
                 var dataObject;
 
                 if (flag === "close") {
                     loadingContainer.classList.add("show")
                     requiredParams = {
-                        client_name: "JC Heritage Roofing",
-                        service_name: "Sales Knowledge Worker",
+                        client_name: "ModelRocket",
+                        service_name: "Sales Knowledge Worker MR-H",
                         language: "english",
-                        msg: userInputTextValue,
+                        msg: userInputTextValue.trim(),
                         flag: flag,
                         session_id: randomNumber,
-                        feedback: feedbackValue === "" ? "" : feedbackValue,
+                        feedback: feedbackValue === "" ? "" : feedbackValue.trim(),
                         rating: starRating
                     };
 
                 } else {
                     requiredParams = {
-                        client_name: "JC Heritage Roofing",
-                        service_name: "Sales Knowledge Worker",
+                        client_name: "ModelRocket",
+                        service_name: "Sales Knowledge Worker MR-H",
                         language: "english",
-                        msg: userInputTextValue,
+                        msg: userInputTextValue.trim(),
                         flag: flag,
                         session_id: randomNumber,
 
                     };
                 }
-
 
                 const url = "https://consumerapi.modelrocket.ai/chatbot_widget";
 
@@ -1055,7 +964,6 @@
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${apiToken}`,
-                        // domain: "onboardconfig.modelrocket.ai"
                         domain: domain
                     },
                     body: JSON.stringify(requiredParams),
@@ -1067,7 +975,6 @@
                         return response.json();
                     })
                     .then((data) => {
-                       
 
                         dataObject = data.data
                         incomingMsgBox1.className = "d-none"
@@ -1088,7 +995,12 @@
                                 return
                             } else {
                                 apiData = data.data.message;
-                                MRUserInputText.focus();
+                                if (feedbackModal.classList.contains("show")) {
+                                    MRUserInputText.blur();
+                                } else {
+                                    MRUserInputText.style.pointerEvents = "all"
+                                    MRUserInputText.focus();
+                                }
                                 resetIdleTracking("continous");
                             }
                         }
@@ -1121,6 +1033,7 @@
 
 
                 if (Object.keys(dataObject).length === 0) {
+                    console.log(dataObject)
                 } else if (Object.keys(dataObject).length) {
                     const incomingMsgBox = document.createElement("div");
                     incomingMsgBox.className = "d-flex incoming-msg";
@@ -1135,22 +1048,17 @@
                     const incomingMsgText = document.createElement("p");
                     incomingMsgText.className = "incoming-msg-text";
                     incomingMsgText.innerHTML = `${apiData}`;
+                    const links = incomingMsgText.querySelectorAll("a");
+                    links.forEach(link => {
+                        link.setAttribute("target", "_blank");
+                        link.setAttribute("rel", "noopener noreferrer");
+                    });
                     const incomingMsgTime = document.createElement("i");
                     incomingMsgTime.className = "incoming-msg-time";
                     incomingMsgTime.innerText = formatAMPM(new Date());
                     incomingMsgText.append(incomingMsgTime);
                     const bottomChat1 = document.createElement("div");
                     incomingMsgBox.append(essenceImg, triangleLeft, incomingMsgText, bottomChat1);
-                    // typeHTML(incomingMsgText, `${apiData}`, 30, () => {
-
-                    //     const incomingMsgTime = document.createElement("i");
-                    //     incomingMsgTime.className = "incoming-msg-time";
-                    //     incomingMsgTime.innerText = formatAMPM(new Date());
-                    //     incomingMsgText.appendChild(incomingMsgTime); // Append time AFTER typing completes
-                    //     MRUserInputText.focus();
-                    //     MRUserInputText.style.pointerEvents = "all"
-                    //     bottomChat1.scrollIntoView({ behavior: "smooth" });
-                    // });
 
                     if (apiData !== undefined) {
                         MRChatboxUl.append(incomingMsgBox);
@@ -1194,7 +1102,7 @@
                 outgoingMsgBox.className = "d-flex outgoing-msg";
                 const outgoingMsgText = document.createElement("p");
                 outgoingMsgText.className = "outgoing-msg-text";
-                outgoingMsgText.innerText = MRUserInputText.value;
+                outgoingMsgText.innerText = MRUserInputText.value.trim();
                 const outgoingMsgTime = document.createElement("i");
                 outgoingMsgTime.className = "outgoing-msg-time";
                 outgoingMsgTime.innerText = formatAMPM(new Date());
@@ -1213,7 +1121,7 @@
                                          <path d="M104.333 54.7331C104.333 55.6131 104.283 56.4731 104.183 57.3331C104.103 58.1131 103.753 61.4431 103.133 65.6831L103.123 65.6931C102.783 68.0431 102.343 70.6731 101.823 73.3131C101.813 73.3431 101.813 73.3831 101.803 73.4131C100.533 79.8431 98.7427 86.2431 96.4027 88.5731C93.7627 91.2131 91.6427 93.6131 89.2227 95.3431C86.8027 97.0831 84.0927 98.1631 80.2927 98.1631C76.4927 98.1631 73.7827 97.0831 71.3627 95.3431C68.9527 93.6131 66.8227 91.2131 64.1827 88.5731C61.8427 86.2331 60.0527 79.8231 58.7727 73.4031V73.3931C58.7627 73.3831 58.7627 73.3731 58.7627 73.3631C58.6027 72.5331 58.4527 71.7031 58.3027 70.8831C58.2427 70.5431 58.1827 70.2031 58.1227 69.8631C57.8727 68.4231 57.6527 67.0131 57.4527 65.6931C56.7327 60.8231 56.3827 57.1531 56.3827 57.1531C56.3027 56.3631 56.2627 55.5531 56.2627 54.7331C56.2627 54.5231 56.2627 54.3131 56.2727 54.1031C56.3227 52.2131 56.5827 50.3731 57.0527 48.6131C57.0727 48.5331 57.0927 48.4531 57.1127 48.3731C59.7827 38.6131 68.4527 31.3231 78.9127 30.7431C79.3727 30.7131 79.8227 30.7031 80.2927 30.7031C86.9327 30.7031 92.9427 33.3931 97.2927 37.7431C101.053 41.4931 103.573 46.4931 104.183 52.0631C104.283 52.9431 104.333 53.8331 104.333 54.7331Z" fill="#F4F4F4"/>
                                          <path d="M84.0724 76.3423C84.0724 78.0013 82.3824 79.3453 80.2924 79.3453C78.2125 79.3453 76.5225 78.0013 76.5225 76.3423C76.5225 76.1433 76.5424 75.9453 76.6024 75.7593C76.9324 77.1373 78.4624 78.1793 80.2924 78.1793C82.1324 78.1793 83.6625 77.1373 83.9925 75.7593C84.0525 75.9453 84.0724 76.1433 84.0724 76.3423Z" fill="#EDF6FF"/>
                                          <path d="M105.057 54.9293C105.057 55.8353 105.006 56.7213 104.903 57.6073C104.821 58.4103 103.134 65.6823 103.134 65.6823C68.584 57.2863 65.821 42.5983 65.821 42.5983C65.934 56.6383 57.454 65.6923 57.454 65.6923C56.712 60.6753 55.664 57.4223 55.664 57.4223C55.582 56.6083 55.54 55.7743 55.54 54.9293C55.54 54.7133 55.54 54.4963 55.55 54.2803C55.601 52.3333 55.869 50.4383 56.353 48.6253C56.374 48.5433 56.394 48.4603 56.415 48.3783C59.165 38.3243 68.097 30.8153 78.872 30.2173C79.346 30.1863 79.809 30.1763 80.294 30.1763C87.134 30.1763 93.325 32.9473 97.806 37.4283C101.679 41.2913 104.275 46.4413 104.904 52.1793C105.006 53.0853 105.057 54.0023 105.057 54.9293Z" fill="#383838"/>
-                                         <path d="M137.543 134.813C123.073 149.803 102.773 159.133 80.293 159.133C57.813 159.133 37.503 149.803 23.043 134.803L24.413 129.413C26.483 121.293 32.873 114.993 41.023 113.043L51.933 110.443L54.643 109.793C55.863 109.503 57.043 109.073 58.143 108.523C63.683 114.423 71.553 118.113 80.293 118.113C89.033 118.113 96.903 114.423 102.443 108.523C103.543 109.063 104.713 109.503 105.943 109.793L108.313 110.363L119.563 113.043C127.713 114.993 134.103 121.293 136.163 129.413L137.543 134.813Z" fill="#11406a"/>
+                                         <path d="M137.543 134.813C123.073 149.803 102.773 159.133 80.293 159.133C57.813 159.133 37.503 149.803 23.043 134.803L24.413 129.413C26.483 121.293 32.873 114.993 41.023 113.043L51.933 110.443L54.643 109.793C55.863 109.503 57.043 109.073 58.143 108.523C63.683 114.423 71.553 118.113 80.293 118.113C89.033 118.113 96.903 114.423 102.443 108.523C103.543 109.063 104.713 109.503 105.943 109.793L108.313 110.363L119.563 113.043C127.713 114.993 134.103 121.293 136.163 129.413L137.543 134.813Z" fill="var(--overall-theme)"/>
                                          <path d="M108.314 110.363C105.874 113.323 96.9036 122.693 80.2936 123.353C61.1536 124.123 52.4536 111.223 51.9336 110.443L54.6436 109.793C55.8636 109.503 57.0436 109.073 58.1436 108.523C63.6836 114.423 71.5536 118.113 80.2936 118.113C89.0336 118.113 96.9036 114.423 102.444 108.523C103.544 109.063 104.714 109.503 105.944 109.793L108.314 110.363Z" fill="#383838"/>
                                          </svg>`;
                 outgoingMsgBox.append(outgoingMsgText, triangleRight, personImg);
@@ -1224,16 +1132,17 @@
                 bottomChat1.scrollIntoView({ behavior: "smooth" });
 
                 setTimeout(() => {
-
-
-
                     generateResponse("step", MRUserInputText.value);
                     MRUserInputText.value = "";
+                    updateSendButtonState()
                     bottomChat1.scrollIntoView({ behavior: "smooth" });
                 }, 0);
             }
 
             MRUserInputText.addEventListener("keypress", (e) => {
+                if (e.key === "Enter" && e.shiftKey) {
+                    return;
+                }
                 if (e.key === "Enter") {
                     if (MRUserInputText.value.trim() === "") {
                         e.preventDefault();
@@ -1255,7 +1164,7 @@
                     clearTimeout(timerRef);
                 }
                 if (value === "close") {
-                    startIdleTracking("close"); // Restart idle tracking
+                    startIdleTracking("close"); 
                 } else {
                     startIdleTracking("continous")
                 }
@@ -1273,11 +1182,10 @@
                         }
                     }, 5000);
                 }
-
-
             };
 
             const closeChat = () => {
+                console.log("Chat has ended")
                 loadingContainer.classList.remove("show")
                 MRChatbotSection.classList.remove("Adra-MR-show-chatbot");
                 const feedbackQuestion = document.getElementById("feedback-question")
@@ -1290,12 +1198,9 @@
                 MRChatbotToggler.style.opacity = "1"
                 return
             }
-
         }
     }
 
     window.ChatWidget = ChatWidget;
 })(window, document);
-
-
 
